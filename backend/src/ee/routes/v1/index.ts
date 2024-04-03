@@ -1,4 +1,5 @@
 import { registerAccessApprovalPolicyRouter } from "./access-approval-policy-router";
+import { registerAccessApprovalRequestRouter } from "./access-approval-request-router";
 import { registerDynamicSecretLeaseRouter } from "./dynamic-secret-lease-router";
 import { registerDynamicSecretRouter } from "./dynamic-secret-router";
 import { registerIdentityProjectAdditionalPrivilegeRouter } from "./identity-project-additional-privilege-router";
@@ -41,6 +42,7 @@ export const registerV1EERoutes = async (server: FastifyZodProvider) => {
   });
 
   await server.register(registerAccessApprovalPolicyRouter, { prefix: "/access-approvals" });
+  await server.register(registerAccessApprovalRequestRouter, { prefix: "/access-approval-requests" });
 
   await server.register(
     async (dynamicSecretRouter) => {
