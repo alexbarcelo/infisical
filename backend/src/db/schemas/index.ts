@@ -1,5 +1,7 @@
 export * from "./access-approval-policies";
 export * from "./access-approval-policies-approvers";
+export * from "./access-approval-requests";
+export * from "./access-approval-requests-reviewers";
 export * from "./api-keys";
 export * from "./audit-logs";
 export * from "./auth-token-sessions";
