@@ -543,7 +543,10 @@ export const registerRoutes = async (
     additionalPrivilegeService: projectUserAdditionalPrivilegeService,
     accessApprovalPolicyDAL,
     accessApprovalRequestDAL,
-    projectEnvDAL
+    projectEnvDAL,
+    userDAL,
+    smtpService,
+    accessApprovalPolicyApproverDAL
   });
 
   const secretRotationQueue = secretRotationQueueFactory({
