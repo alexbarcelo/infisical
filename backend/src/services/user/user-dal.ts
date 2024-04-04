@@ -61,6 +61,17 @@ export const userDALFactory = (db: TDbClient) => {
     }
   };
 
+  const findUsersByProjectMembershipIds = async (projectMembershipIds: string[]) => {
+    try {
+      return await db(TableName.ProjectMembership)
+        .whereIn(`${TableName.ProjectMembership}.id`, projectMembershipIds)
+        .join(TableName.Users, `${TableName.ProjectMembership}.userId`, `${TableName.Users}.id`)
+        .select("*");
+    } catch (error) {
+      throw new DatabaseError({ error, name: "Find users by project membership ids" });
+    }
+  };
+
   const createUserEncryption = async (data: TUserEncryptionKeysInsert, tx?: Knex) => {
     try {
       const [userEnc] = await (tx || db)(TableName.UserEncryptionKey).insert(data).returning("*");
@@ -126,6 +137,7 @@ export const userDALFactory = (db: TDbClient) => {
     findUserEncKeyByUserId,
     updateUserEncryptionByUserId,
     findUserByProjectMembershipId,
+    findUsersByProjectMembershipIds,
     upsertUserEncryptionKey,
     createUserEncryption,
     findOneUserAction,
