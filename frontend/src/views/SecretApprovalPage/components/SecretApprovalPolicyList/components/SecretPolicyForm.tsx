@@ -65,7 +65,6 @@ export const SecretPolicyForm = ({
     values: editValues ? { ...editValues, environment: editValues.environment.slug } : undefined
   });
   const { currentWorkspace } = useWorkspace();
-  
 
   const environments = currentWorkspace?.environments || [];
   useEffect(() => {
