@@ -215,7 +215,7 @@ export const SecretPolicyForm = ({
                           iconPos="right"
                           icon={isChecked && <FontAwesomeIcon icon={faCheckCircle} />}
                         >
-                          {user.email}
+                          {user.username}
                         </DropdownMenuItem>
                       );
                     })}
